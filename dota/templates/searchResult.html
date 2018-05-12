@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    搜索结果
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/searchResult.css') }}">
+{% endblock %}
+{% block main %}
+    <h3>搜索结果</h3>
+    <div class="ul-container">
+        <ul class="list-group">
+            {% for result in results %}
+                <li class="list-group-item">
+                    <p class="title-control"><a
+                            href="{{ url_for('question_detail', community_id=result.id) }}">{{ result.title }}</a></p>
+                    <p class="context-control">{{ result.context }}</p>
+                    <p class="other-control">
+                        <span class="author-control">{{ result.author.username }}</span>
+                        <span class="create-time-control">{{ result.create_time }}</span>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

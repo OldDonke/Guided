@@ -1,0 +1,5 @@
+*.pyc
+dota.db/
+dota2/
+migrations/
+search.db/

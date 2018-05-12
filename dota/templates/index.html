@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+{% block main %}
+    <div class="ul-container">
+        <ul class="list-group">
+            {% for context in community_context %}
+                <li class="list-group-item">
+                    <p class="title-control"><a href="{{ url_for('question_detail', community_id=context.id) }}">{{ context.title }}</a></p>
+                    <p class="context-control">{{ context.context }}</p>
+                    <p class="other-control">
+                        <span class="author-control">{{ context.author.username }}</span>
+                        <span class="create-time-control">{{ context.create_time }}</span>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

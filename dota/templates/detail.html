@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}
+
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+    <script>
+        $(function () {
+           $('submit').click(function () {
+               var $result = $('#result');
+               var $comment = $('input[name=comment]').val();
+               $.ajax({
+                   url:'{{ url_for('add_comment') }}',
+                   data:$('form').serialize(),
+                   type:'POST',
+                   dataType:'json'
+               }).done(function (data) {
+                   alert(data);
+                   window.location.href='{{ url_for('add_comment') }}';
+               });
+           });
+        });
+    </script>
+{% endblock %}
+{% block main %}
+    <div class="detail-container">
+
+        <h3>{{ community.title }}</h3>
+        <p class="p-control">
+            <span class="author-control">作者：{{ community.author.username }}</span>
+            <span class="time-control">时间：{{ community.create_time }}</span>
+        </p>
+        <hr>
+        <p class="context-control">{{ community.context }}</p>
+        <hr>
+        <div class="comment-container">
+            {% for comment in community.comments %}
+                {% if loop.last %}
+                    <h4>评论：（{{ loop.length }}）</h4>
+                {% endif %}
+            {% endfor %}
+            <form action="{{ url_for('add_comment') }}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="comment" placeholder="请输入评论">
+                    <input type="hidden" name="community_id" value={{ community.id }}>
+                </div>
+                <div class="form-group" style="text-align: right">
+                    <button class="btn btn-primary" name="submit">评论</button>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <div class="ul-container">
+            <ul class="list-group">
+                {% for comment in community.comments %}
+                    <li class="list-group-item">
+                        <p class="author-comment">{{ comment.author.username }}</p>
+                        <p class="context-comment">{{ comment.context }}</p>
+                        {% if comment.create_time != None %}
+                            <p class="time-comment">{{ comment.create_time }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+.ul-container{
+    width: 700px;
+    margin:0 auto;
+}
+
+.title-control{
+    text-align: left;
+    color: blue;
+}
+
+.context-control{
+    text-align: justify;
+}
+
+.other-control{
+    text-align: right;
+}
+
+.author-control{
+    padding-left: 10px;
+}

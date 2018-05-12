@@ -1,0 +1,52 @@
+h3{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.p-control{
+    text-align: center;
+}
+
+.context-control{
+    width: 500px;
+    margin:0 auto;
+    text-align: start;
+}
+
+.detail-container{
+    width: 700px;
+    margin: 0 auto;
+    background: whitesmoke;
+}
+.author-control{
+    padding-right: 20px;
+}
+
+.comment-container{
+    width: 500px;
+    margin:0 auto;
+    padding-bottom: 20px;
+}
+
+h4{
+    text-align: start;
+}
+
+.ul-container{
+    width: 500px;
+    margin:0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.author-comment{
+    text-align: left;
+}
+
+.context-comment{
+    text-align: start;
+}
+
+.time-comment{
+    text-align: right;
+}
